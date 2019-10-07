@@ -106,6 +106,9 @@
                                 </ul>
                             </li>
                             <!-- Control Sidebar Toggle Button -->
+                            <li>
+                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gesssars"></i></a>
+                            </li>
                         </ul>
                     </div>
                     @if(config('adminlte.layout') == 'top-nav')

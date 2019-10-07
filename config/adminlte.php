@@ -155,6 +155,50 @@ return [
             ],
         ],
         [
+            'text'    => 'Drivers',
+            'icon'    => 'fas fa-fw fa-user',
+            'icon_color' => 'purple',
+            'submenu' => [
+                [
+                    'text' => 'All Drivers',
+                    'url'  => 'drivers',
+                    'icon' => 'fas fa-fw fa-bus',
+                    'icon_color' => 'success'
+                ],
+                [
+                    'text' => 'Active',
+                    'url'  => 'drivers/active',
+                    'icon' => 'fas fa-fw fa-user',
+                    'icon_color' => 'purple'
+                ],
+                [
+                    'text' => 'In Active',
+                    'url'  => 'drivers/inactive',
+                    'icon' => 'fas fa-fw fa-user',
+                    'icon_color' => 'yellow'
+                ]
+            ],
+        ],
+        [
+            'text' => 'Routes',
+            'url'  => '',
+            'icon' => 'fas fa-fw fa-bolt',
+            'icon_color' => 'blue',
+        ],
+        [
+            'text'    => 'Reports',
+            'icon'    => 'fas fa-fw fa-list',
+            'icon_color' => 'red',
+            'submenu' => [
+                [
+                    'text' => 'Driver Payment Reports',
+                    'url'  => 'drivers',
+                    'icon' => 'fas fa-fw fa-bus',
+                    'icon_color' => 'success'
+                ],
+            ],
+        ],
+        [
             'text'    => 'User Management',
             'icon'    => 'fas fa-fw fa-user-circle',
             'icon_color' => 'green',
