@@ -44,13 +44,13 @@
                         <td> <a href="/job/manage/&id={{$item->vehicle_id}}" class="btn btn-flat btn-info btn-sm"><i
                                     class="fa fa-eye"></i></a>
 
-                            <a class="btn btn-danger btn-sm" title="Delete Job Opening" href="#" data-toggle="modal"
-                                data-target="#modal_delete_job_{{$item->vehicle_id}}" data-backdrop="static"
+                            <a class="btn btn-danger btn-sm" title="Delete Vehicle" href="#" data-toggle="modal"
+                                data-target="#modal_delete_vehicle_{{$item->vehicle_id}}" data-backdrop="static"
                                 data-keyboard="false"><i class="fa fa-trash"></i></a>
 
                         </td>
                     </tr>
-                    {{-- @include('jobs.modals.modal_delete_job') --}}
+                    @include('vehicles.modals.modal_delete_vehicle')
                     @endforeach
                 </tbody>
             </table>

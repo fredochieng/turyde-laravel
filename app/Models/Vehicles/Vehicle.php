@@ -11,6 +11,7 @@ class Vehicle extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $table = 'vehicles';
+    protected $primaryKey = 'id';
 
     public static function getVehicles()
     {

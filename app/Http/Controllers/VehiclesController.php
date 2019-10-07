@@ -125,8 +125,18 @@ class VehiclesController extends Controller
      * @param  \App\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vehicle $vehicle)
+    public function destroy(Request $request, Vehicle $vehicle)
     {
-        //
+        $vehicle_id = $request->input('vehicle_id');
+
+        //dd($vehicle_id);
+        $now = Carbon::now('Africa/Nairobi');
+        $update_vehicle = Vehicle::where("id", $vehicle_id)->delete();
+        // $data = Vehicle::find($vehicle_id)->delete();
+
+        Log::critical("VEHICLE OF ID " . $vehicle_id .  " DELETED BY USER ID: " . Auth::id() . " NAME " . Auth::user()->name . " AT " . $now);
+
+        Toastr::success('Vehicle deleted successfully');
+        return back();
     }
 }
