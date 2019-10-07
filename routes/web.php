@@ -19,4 +19,7 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Routes for vehicles
 Route::resource('/vehicles/all', 'VehiclesController');
+Route::any('/vehicle/manage/&id={id}', 'VehiclesController@manageVehicle');

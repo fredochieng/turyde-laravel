@@ -34,14 +34,14 @@
                     <tr>
                         <td>
                             <span class="hidden-xs">
-                                <img src="/{{$item->vehicle_picture}}" class="img-circle" alt="User Image"></span>
+                                <img src="/{{$item->vehicle_picture}}" class="vehicle-circle" alt="User Image"></span>
                         </td>
                         <td>{{$item->vehicle_name}}</td>
                         <td>{{$item->vehicle_type}}</td>
                         <td>{{$item->vehicle_number}}</td>
                         <td>{{$item->seats}}</td>
                         <td>{{$item->vehicle_created_at}}</td>
-                        <td> <a href="/job/manage/&id={{$item->vehicle_id}}" class="btn btn-flat btn-info btn-sm"><i
+                        <td> <a href="/vehicle/manage/&id={{$item->vehicle_id}}" class="btn btn-flat btn-info btn-sm"><i
                                     class="fa fa-eye"></i></a>
 
                             <a class="btn btn-danger btn-sm" title="Delete Vehicle" href="#" data-toggle="modal"
