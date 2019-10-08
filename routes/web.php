@@ -25,12 +25,9 @@ Route::resource('/vehicles/all', 'VehiclesController');
 Route::any('/vehicle/manage/&id={id}', 'VehiclesController@manageVehicle');
 Route::any('/driver/assign', 'VehiclesController@assignDriver');
 
-<<<<<<< Updated upstream
 //Routes for drivers
 Route::resource('/drivers', 'DriverController');
 Route::any('/driver/manage/&id={id}', 'DriverController@manageDriver');
-=======
 Route::resource('/routes', 'RoutesController');
 
 Route::any('/routes/create', 'RoutesController@create');
->>>>>>> Stashed changes
