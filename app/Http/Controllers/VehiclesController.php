@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Drivers\Driver;
 use App\Models\Vehicles\Vehicle;
 use App\Models\VehicleTypes\VehicleType;
 use App\User;
@@ -104,21 +105,30 @@ class VehiclesController extends Controller
         // Get the selected vehicle, vehicle id passed
         $data['vehicles'] = Vehicle::getVehicles()->where('vehicle_id', $vehicle_id)->first();
 
+        //dd($data['vehicles']);
         // Get vehicle types
         $data['vehicle_types'] = VehicleType::getVehicleTypes();
 
-        // $image = $data['vehicles']->vehicle_picture;
+        // Get drivers who are not assigned to any vehicle
 
-        // // You can store this but should validate it to avoid conflicts
-        // $original_name = $image->getClientOriginalName();
-
-        // // This would be used for the payload
-        // $file_path = $image->getPathName();
-
-        // dd($file_path);
-
+        $data['unassigned_drivers'] = Driver::getUnassignedDrivers()
+            ->where('vehicle_driver_id', '=', '')
+            ->where('driver_status', '=', 'Active');
 
         return view('vehicles.manage')->with($data);
+    }
+
+    public function assignDriver(Request $request)
+    {
+        $driver_id = $request->input('driver_id');
+        $vehicle_id = $request->input('vehicle_id');
+
+        $assign_driver = Vehicle::where("id", $vehicle_id)->update([
+            'driver_id' => $driver_id
+        ]);
+
+        Toastr::success('Vehicle assigned successfully');
+        return back();
     }
 
     /**
