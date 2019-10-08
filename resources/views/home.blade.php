@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard | Wananchi HR Recruitment')
+@section('title', 'Dashboard | M-Safiri Turyde')
 
 @section('content_header')
 <h1>Dashboard</h1>

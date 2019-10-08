@@ -23,3 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Routes for vehicles
 Route::resource('/vehicles/all', 'VehiclesController');
 Route::any('/vehicle/manage/&id={id}', 'VehiclesController@manageVehicle');
+
+//Routes for drivers
+Route::resource('/drivers', 'DriverController');
+Route::any('/driver/manage/&id={id}', 'DriverController@manageDriver');

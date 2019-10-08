@@ -161,7 +161,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'All Drivers',
-                    'url'  => 'drivers',
+                    'url'  => '/drivers',
                     'icon' => 'fas fa-fw fa-bus',
                     'icon_color' => 'success'
                 ],

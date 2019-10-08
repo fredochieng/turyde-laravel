@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ModifyVehiclesTable extends Migration
+class AddDriverImageToDriversTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class ModifyVehiclesTable extends Migration
      */
     public function up()
     {
-        Schema::table('vehicles', function (Blueprint $table) {
-            //
+        Schema::table('drivers', function (Blueprint $table) {
+            $table->string('driver_image')->after('address');
         });
     }
 
@@ -25,8 +25,8 @@ class ModifyVehiclesTable extends Migration
      */
     public function down()
     {
-        Schema::table('vehicles', function (Blueprint $table) {
-            //
+        Schema::table('drivers', function (Blueprint $table) {
+            $table->dropColumn('driver_image');
         });
     }
 }
