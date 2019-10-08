@@ -24,6 +24,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/vehicles/all', 'VehiclesController');
 Route::any('/vehicle/manage/&id={id}', 'VehiclesController@manageVehicle');
 
+<<<<<<< Updated upstream
 //Routes for drivers
 Route::resource('/drivers', 'DriverController');
 Route::any('/driver/manage/&id={id}', 'DriverController@manageDriver');
+=======
+Route::resource('/routes', 'RoutesController');
+
+Route::any('/routes/create', 'RoutesController@create');
+>>>>>>> Stashed changes
