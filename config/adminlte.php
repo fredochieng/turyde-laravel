@@ -180,10 +180,23 @@ return [
             ],
         ],
         [
-            'text' => 'Routes',
-            'url'  => '',
-            'icon' => 'fas fa-fw fa-bolt',
-            'icon_color' => 'blue',
+            'text'    => 'Routes',
+            'icon'    => 'fas fa-fw fa-list',
+            'icon_color' => 'red',
+            'submenu' => [
+                [
+                    'text' => 'All Routes',
+                    'url'  => 'routes',
+                    'icon' => 'fas fa-fw fa-bolt',
+                    'icon_color' => 'blue',
+                ],
+                [
+                    'text' => 'Add Route',
+                    'url'  => '/routes/create',
+                    'icon' => 'fas fa-fw fa-bolt',
+                    'icon_color' => 'blue',
+                ],
+            ],
         ],
         [
             'text'    => 'Reports',
