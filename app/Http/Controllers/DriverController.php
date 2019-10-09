@@ -162,6 +162,38 @@ class DriverController extends Controller
             'email' => $request->input('email')
         ]);
 
+        $phone_no = $request->input('phone_no');
+        // Get file attachments form the form 
+        if ($request->hasFile('driver_image') && $request->file('driver_image')->isValid()) {
+            $file = $request->file('driver_image');
+            $file_name = $phone_no .  '_' . $file->getClientOriginalExtension();
+            $file->move('uploads/driver_images', $file_name);
+            $driver_image = 'uploads/driver_images/' . $file_name;
+        } else {
+            $driver_image = Driver::where('driver_id', $driver_id)->first();
+            $driver_image = $driver_image->driver_image;
+        }
+
+        if ($request->hasFile('driver_license') && $request->file('driver_license')->isValid()) {
+            $file = $request->file('driver_license');
+            $file_name = $phone_no .  '_' . $file->getClientOriginalExtension();
+            $file->move('uploads/driver_licences', $file_name);
+            $driver_license = 'uploads/driver_licences/' . $file_name;
+        } else {
+            $driver_license = Driver::where('driver_id', $driver_id)->first();
+            $driver_license = $driver_license->licence_file;
+        }
+
+        if ($request->hasFile('address_proof') && $request->file('address_proof')->isValid()) {
+            $file = $request->file('address_proof');
+            $file_name = $phone_no .  '_' . $file->getClientOriginalExtension();
+            $file->move('uploads/driver_address_proof', $file_name);
+            $address_file = 'uploads/driver_address_proof/' . $file_name;
+        } else {
+            $address_file = Driver::where('driver_id', $driver_id)->first();
+            $address_file = $address_file->address_file;
+        }
+
         // Get new input elements and update the driver details
         $update_driver_details = Driver::where("driver_id", $driver_id)->update([
             'phone_no' => $request->input('phone_no'),
@@ -170,10 +202,10 @@ class DriverController extends Controller
             'country_id' => $request->input('country_id'),
             'city_id' => $request->input('city_id'),
             'zipcode' => $request->input('zipcode'),
-            'address' => $request->input('address')
-            // 'driver_image' => $request->input('phone'),
-            // 'licence_file' => $request->input('phone'),
-            // 'address_file' => $request->input('phone')
+            'address' => $request->input('address'),
+            'driver_image' => $driver_image,
+            'licence_file' => $driver_license,
+            'address_file' => $address_file
         ]);
 
         // Log the update action

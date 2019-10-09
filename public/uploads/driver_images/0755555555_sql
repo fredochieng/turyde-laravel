@@ -1,0 +1,87 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Sep 20, 2019 at 02:38 PM
+-- Server version: 5.6.41-84.1
+-- PHP Version: 7.2.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `interwg4_interweb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message_temp`
+--
+
+CREATE TABLE `message_temp` (
+  `mess_id` int(11) NOT NULL,
+  `title` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `message` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `message_temp`
+--
+
+INSERT INTO `message_temp` (`mess_id`, `title`, `message`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, 'System Upgrade', 'test mail', 1, '2019-09-19 09:43:41', '2019-09-19 09:20:15'),
+(2, 'Supply of Laptops and Bags', 'ddddd', 1, '2019-09-19 09:43:41', '2019-09-19 09:36:57'),
+(3, 'Testing  One', 'ffffff', 1, '2019-09-19 09:43:41', '2019-09-19 09:39:13'),
+(4, 'contract two', 'dddd', 1, '2019-09-19 09:45:14', '2019-09-19 09:45:14'),
+(5, 'System Upgrade', 'ddff vrrrvvvvv', 1, '2019-09-19 12:26:52', '2019-09-19 12:26:52'),
+(6, 'Test mail for today 20/09/2019', 'Hello', 1, '2019-09-20 11:52:23', '2019-09-20 11:52:23'),
+(7, 'Testing Timezone at 15:58', 'test', 1, '2019-09-20 12:58:17', '2019-09-20 12:58:17'),
+(8, 'Test Mail at 17:17', 'Test mail for today', 1, '2019-09-20 13:17:25', '2019-09-20 13:17:25'),
+(9, 'Test Mail at 16:30', 'test', 1, '2019-09-20 13:31:12', '2019-09-20 13:31:12'),
+(10, 'System Upgrade', 'test', 1, '2019-09-20 13:35:19', '2019-09-20 13:35:19'),
+(11, 'Supply of Laptops', 'fred', 1, '2019-09-20 13:41:42', '2019-09-20 13:41:42'),
+(12, 'Supply of Laptops and Bags', 'fred', 1, '2019-09-20 13:47:01', '2019-09-20 13:47:01'),
+(13, 'Supply of Laptops', 'ddddd', 1, '2019-09-20 13:49:53', '2019-09-20 13:49:53'),
+(14, 'Time to go home', 'Go home now', 1, '2019-09-20 13:53:27', '2019-09-20 13:53:27'),
+(15, 'Time to go home at 1700hrs', 'go', 1, '2019-09-20 13:56:02', '2019-09-20 13:56:02'),
+(16, 'Supply of Laptops', 'test', 1, '2019-09-20 19:16:21', '2019-09-20 19:16:21'),
+(17, 'System Upgrade', 'ffff', 1, '2019-09-20 19:34:18', '2019-09-20 19:34:18'),
+(18, 'contract two', 'rwrrrrr', 1, '2019-09-20 19:39:02', '2019-09-20 19:39:02');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `message_temp`
+--
+ALTER TABLE `message_temp`
+  ADD PRIMARY KEY (`mess_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `message_temp`
+--
+ALTER TABLE `message_temp`
+  MODIFY `mess_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

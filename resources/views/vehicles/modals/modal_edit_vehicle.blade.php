@@ -42,12 +42,43 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
+                            {!! Form::label('Driver') !!}
+                            <div class="form-group">
+                                {{Form::text('driver', $vehicles->name, ['class' => 'form-control', 'readonly' ])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
                             {!! Form::label('Number of Seats') !!}
                             <div class="form-group">
                                 {{Form::number('seats', $vehicles->seats, ['class' => 'form-control', 'min'=>'1','required' ])}}
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {!! Form::label('Created At') !!}
+                            <div class="form-group">
+                                {{Form::text('vehicle_created_at', $vehicles->vehicle_created_at, ['class' => 'form-control', 'readonly' ])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        {{Form::label('Vehicle Image')}}
+                        <div class="form-group">
+                            <a href="/{{ $vehicles->vehicle_picture }}" target="_blank">
+                                <i class="fa fa-fw fa-download"></i> Download Vehicle Image</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        {{Form::label('Vehicle Document')}}
+                        <div class="form-group">
+                            <a href="/{{ $vehicles->vehicle_document }}" target="_blank">
+                                <i class="fa fa-fw fa-download"></i> Download Vehicle Document</a>
+                        </div>
+                    </div>
+
                     <div class="col-md-4">
                         {{Form::label('Upload Vehicle Image')}}
                         <div class="form-group">
@@ -60,6 +91,10 @@
                             {{Form::file('vehicle_document',['class'=>'form-control'])}}
                         </div>
                     </div>
+
+
+
+
                 </div>
             </div>
             <div class="modal-footer">

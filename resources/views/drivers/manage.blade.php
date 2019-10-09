@@ -191,4 +191,17 @@
 <script src="/js/bootstrap-datepicker.min.js"></script>
 <script src="/js/bootstrap-timepicker.min.js"></script>
 <script src="/js/dataTable.js"></script>
+<script>
+    $(function () {
+         $('.date_selector').datepicker( {
+             format: 'yyyy-mm-dd',
+            orientation: "bottom",
+            autoclose: true,
+             showDropdowns: true,
+             todayHighlight: true,
+             toggleActive: true,
+             clearBtn: true,
+         }) 
+        });
+</script>
 @stop

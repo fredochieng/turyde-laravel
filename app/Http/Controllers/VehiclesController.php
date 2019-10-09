@@ -167,12 +167,37 @@ class VehiclesController extends Controller
         // Get current time with Carbon
         $now = Carbon::now('Africa/Nairobi');
 
+        $vehicle_number = $request->input('vehicle_number');
+        // Get file attachments form the form for vehicle image
+        if ($request->hasFile('vehicle_picture') && $request->file('vehicle_picture')->isValid()) {
+            $file = $request->file('vehicle_picture');
+            $file_name = $vehicle_number .  '_' . $file->getClientOriginalExtension();
+            $file->move('uploads/vehicle_images', $file_name);
+            $vehicle_image = 'uploads/vehicle_images/' . $file_name;
+        } else {
+            $vehicle_image = Vehicle::where('id', $vehicle_id)->first();
+            $vehicle_image = $vehicle_image->vehicle_picture;
+        }
+
+        // Get file attachments form the form for vehicle document
+        if ($request->hasFile('vehicle_document') && $request->file('vehicle_document')->isValid()) {
+            $file = $request->file('vehicle_document');
+            $file_name = $vehicle_number .  '_' . $file->getClientOriginalExtension();
+            $file->move('uploads/vehicle_documents', $file_name);
+            $vehicle_document = 'uploads/vehicle_documents/' . $file_name;
+        } else {
+            $vehicle_document = Vehicle::where('id', $vehicle_id)->first();
+            $vehicle_document = $vehicle_document->vehicle_document;
+        }
+
         // Get new input elements and update the vehicle details
         $update_vehicle = Vehicle::where("id", $vehicle_id)->update([
             'vehicle_name' => strtoupper($request->input('vehicle_name')),
             'type' => $request->input('vehicle_type_id'),
             'vehicle_number' => strtoupper($request->input('vehicle_number')),
-            'seats' => $request->input('seats')
+            'seats' => $request->input('seats'),
+            'vehicle_picture' => $vehicle_image,
+            'vehicle_document' => $vehicle_document
         ]);
 
         // Log the update action

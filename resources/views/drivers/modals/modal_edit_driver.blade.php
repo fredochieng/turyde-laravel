@@ -2,7 +2,7 @@
     data-keyboard="false">
     <div class="modal-dialog" style="width:70%">
         <div class="modal-content">
-            {!!
+            {!!  !!}
             Form::open(['action'=>['DriverController@update',$drivers->driver_id],'method'=>'PATCH','class'=>'form','enctype'=>'multipart/form-data'])
             !!}
             <div class="modal-header">
@@ -100,13 +100,34 @@
                             </div>
                         </div>
                         <div class="col-md-4">
+                            {{Form::label('Driver Image')}}
+                            <div class="form-group">
+                                <a href="/{{ $drivers->driver_image }}" target="_blank">
+                                    <i class="fa fa-fw fa-download"></i> Download Driver Image</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            {{Form::label('License Document')}}
+                            <div class="form-group">
+                                <a href="/{{ $drivers->licence_file }}" target="_blank">
+                                    <i class="fa fa-fw fa-download"></i> Download Driver Licence</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            {{Form::label('Driver Address Proof')}}
+                            <div class="form-group">
+                                <a href="/{{ $drivers->address_file }}" target="_blank">
+                                    <i class="fa fa-fw fa-download"></i> Download Driver Address Proof</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             {{Form::label('Upload Driver Image *')}}
                             <div class="form-group">
                                 {{Form::file('driver_image',['class'=>'form-control'])}}
                             </div>
                         </div>
                         <div class="col-md-4">
-                            {{Form::label('Upload Vehicle Document *')}}
+                            {{Form::label('Upload License Document *')}}
                             <div class="form-group">
                                 {{Form::file('driver_license',['class'=>'form-control'])}}
                             </div>

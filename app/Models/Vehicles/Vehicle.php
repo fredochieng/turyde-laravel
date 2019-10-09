@@ -22,10 +22,13 @@ class Vehicle extends Model
                 DB::raw('vehicles.created_at as vehicle_created_at'),
                 DB::raw('vehicle_types.id as vehicle_type_id'),
                 DB::raw('vehicle_types.vehicle_type'),
-                DB::raw('companies.id')
+                DB::raw('companies.id'),
+                DB::raw('users.id as user_id'),
+                DB::raw('users.name')
             )
             ->leftJoin('vehicle_types', 'vehicles.type', '=', 'vehicle_types.id')
             ->leftJoin('companies', 'vehicles.company_id', '=', 'companies.id')
+            ->leftJoin('users', 'vehicles.driver_id', '=', 'users.id')
             ->get();
 
         return $vehicles;

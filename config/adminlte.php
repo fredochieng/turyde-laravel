@@ -181,20 +181,20 @@ return [
         ],
         [
             'text'    => 'Routes',
-            'icon'    => 'fas fa-fw fa-list',
-            'icon_color' => 'red',
+            'icon'    => 'fas fa-fw fa-map',
+            'icon_color' => '#f56954',
             'submenu' => [
                 [
                     'text' => 'All Routes',
                     'url'  => 'routes',
-                    'icon' => 'fas fa-fw fa-bolt',
+                    'icon' => 'fas fa-fw fa-map-signs',
                     'icon_color' => 'blue',
                 ],
                 [
                     'text' => 'Add Route',
                     'url'  => '/routes/create',
-                    'icon' => 'fas fa-fw fa-bolt',
-                    'icon_color' => 'blue',
+                    'icon' => 'fas fa-fw fa-plus-circle',
+                    'icon_color' => 'green',
                 ],
             ],
         ],

@@ -65,7 +65,11 @@
 
                         <tr>
                             <td><b>Driver</b></td>
-                            <td><span style="font-weight:bold">{{ $vehicles->vehicle_created_at}}</span></td>
+                            @if ($vehicles->name != '')
+                            <td><span style="font-weight:bold">{{ $vehicles->name}}</span></td>
+                            @else
+                            <td><span style="font-weight:bold">Unassigned</span></td>
+                            @endif
                         </tr>
                         <tr>
                             <td><b>Created At</b></td>
