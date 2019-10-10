@@ -14,7 +14,7 @@ class Location extends Model
                    ->select(
                        DB::raw('locations.*'),
                        DB::raw('locations.id'),
-                       DB::raw('locations.address as location_address'),
+                       DB::raw('locations.address as location_address')
                        )
                    ->get();
 
