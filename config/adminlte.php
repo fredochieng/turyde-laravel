@@ -134,7 +134,12 @@ return [
             'icon' => 'fas fa-fw fa-home',
             'icon_color' => 'blue',
         ],
-
+        [
+            'text' => 'Companies',
+            'url'  => 'companies',
+            'icon' => 'fas fa-fw fa-desktop',
+            'icon_color' => 'fuchsia',
+        ],
         [
             'text'    => 'Vehicles',
             'icon'    => 'fas fa-fw fa-car',
@@ -215,6 +220,14 @@ return [
             'text'    => 'User Management',
             'icon'    => 'fas fa-fw fa-user-circle',
             'icon_color' => 'green',
+            'submenu' => [
+                [
+                    'text' => 'Driver',
+                    'url'  => 'drivers',
+                    'icon' => 'fas fa-fw fa-bus',
+                    'icon_color' => 'success'
+                ],
+            ],
         ],
 
     ],

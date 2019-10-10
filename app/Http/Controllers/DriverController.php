@@ -60,6 +60,7 @@ class DriverController extends Controller
         $city_id = $request->input('city_id');
         $zipcode = $request->input('zipcode');
         $address = strtoupper($request->input('address'));
+        $password = '12345678';
 
         // Get file attachments form the form 
         if ($request->hasFile('driver_image') && $request->file('driver_image')->isValid()) {
@@ -86,7 +87,7 @@ class DriverController extends Controller
         $user = new User();
         $user->name = $name;
         $user->email = $email;
-        $user->password = "FREDDDDDDDD";
+        $user->password =  Hash::make($password);
 
         $user->save();
 

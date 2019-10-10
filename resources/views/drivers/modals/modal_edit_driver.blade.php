@@ -2,7 +2,7 @@
     data-keyboard="false">
     <div class="modal-dialog" style="width:70%">
         <div class="modal-content">
-            {!!  !!}
+            {!!
             Form::open(['action'=>['DriverController@update',$drivers->driver_id],'method'=>'PATCH','class'=>'form','enctype'=>'multipart/form-data'])
             !!}
             <div class="modal-header">
