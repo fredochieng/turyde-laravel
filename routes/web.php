@@ -33,5 +33,4 @@ Route::resource('/drivers', 'DriverController');
 Route::any('/driver/manage/&id={id}', 'DriverController@manageDriver');
 Route::resource('/routes', 'RoutesController');
 
-// Routes for routes
 Route::any('/routes/create', 'RoutesController@create');
