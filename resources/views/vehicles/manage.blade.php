@@ -8,10 +8,13 @@
         <a href="#" data-toggle="modal" data-target="#modal_edit_vehicle_{{ $vehicles->vehicle_id }}"
             class="btn btn-primary btn-sm btn-flat"><i class="fas fa-fw fa-plus-circle"></i>
             EDIT VEHICLE</a>
-
-        <a href="#" data-toggle="modal" data-target="#modal_edit_interview_{{ $vehicles->vehicle_id }}"
+        @if ($vehicles->driver_id == '')
+        <a href="#" data-toggle="modal" data-target="#modal_assign_driver_{{ $vehicles->vehicle_id }}"
             class="btn btn-info btn-sm btn-flat"><i class="fas fa-fw fa-plus-circle"></i>
             ASSIGN DRIVER</a>
+        @else
+
+        @endif
     </p>
 </h1>
 @stop
@@ -62,7 +65,11 @@
 
                         <tr>
                             <td><b>Driver</b></td>
-                            <td><span style="font-weight:bold">{{ $vehicles->vehicle_created_at}}</span></td>
+                            @if ($vehicles->name != '')
+                            <td><span style="font-weight:bold">{{ $vehicles->name}}</span></td>
+                            @else
+                            <td><span style="font-weight:bold">Unassigned</span></td>
+                            @endif
                         </tr>
                         <tr>
                             <td><b>Created At</b></td>
@@ -89,6 +96,7 @@
 
 @stop
 @include('vehicles.modals.modal_edit_vehicle')
+@include('vehicles.modals.modal_assign_driver')
 @section('css')
 <link rel="stylesheet" href="/css/custom.css">
 @stop

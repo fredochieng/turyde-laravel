@@ -75,7 +75,6 @@
                         <th>Start Time</th>
                         <th>End Time</th>
                         <th>Trip Status</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tr>
@@ -183,9 +182,7 @@
     </div>
 </div>
 @stop
-{{-- @include('interviews.modals.modal_edit_interview')
-@include('interviews.modals.modal_start_session')
-@include('interviews.modals.modal_add_candidates') --}}
+@include('drivers.modals.modal_edit_driver')
 @section('css')
 <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css">
 <link rel="stylesheet" href="/css/bootstrap-timepicker.min.css">
@@ -194,4 +191,17 @@
 <script src="/js/bootstrap-datepicker.min.js"></script>
 <script src="/js/bootstrap-timepicker.min.js"></script>
 <script src="/js/dataTable.js"></script>
+<script>
+    $(function () {
+         $('.date_selector').datepicker( {
+             format: 'yyyy-mm-dd',
+            orientation: "bottom",
+            autoclose: true,
+             showDropdowns: true,
+             todayHighlight: true,
+             toggleActive: true,
+             clearBtn: true,
+         }) 
+        });
+</script>
 @stop

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Drivers\Driver;
 use App\Models\Vehicles\Vehicle;
 use App\Models\VehicleTypes\VehicleType;
 use App\User;
@@ -104,21 +105,30 @@ class VehiclesController extends Controller
         // Get the selected vehicle, vehicle id passed
         $data['vehicles'] = Vehicle::getVehicles()->where('vehicle_id', $vehicle_id)->first();
 
+        //dd($data['vehicles']);
         // Get vehicle types
         $data['vehicle_types'] = VehicleType::getVehicleTypes();
 
-        // $image = $data['vehicles']->vehicle_picture;
+        // Get drivers who are not assigned to any vehicle
 
-        // // You can store this but should validate it to avoid conflicts
-        // $original_name = $image->getClientOriginalName();
-
-        // // This would be used for the payload
-        // $file_path = $image->getPathName();
-
-        // dd($file_path);
-
+        $data['unassigned_drivers'] = Driver::getUnassignedDrivers()
+            ->where('vehicle_driver_id', '=', '')
+            ->where('driver_status', '=', 'Active');
 
         return view('vehicles.manage')->with($data);
+    }
+
+    public function assignDriver(Request $request)
+    {
+        $driver_id = $request->input('driver_id');
+        $vehicle_id = $request->input('vehicle_id');
+
+        $assign_driver = Vehicle::where("id", $vehicle_id)->update([
+            'driver_id' => $driver_id
+        ]);
+
+        Toastr::success('Vehicle assigned successfully');
+        return back();
     }
 
     /**
@@ -157,12 +167,37 @@ class VehiclesController extends Controller
         // Get current time with Carbon
         $now = Carbon::now('Africa/Nairobi');
 
+        $vehicle_number = $request->input('vehicle_number');
+        // Get file attachments form the form for vehicle image
+        if ($request->hasFile('vehicle_picture') && $request->file('vehicle_picture')->isValid()) {
+            $file = $request->file('vehicle_picture');
+            $file_name = $vehicle_number .  '_' . $file->getClientOriginalExtension();
+            $file->move('uploads/vehicle_images', $file_name);
+            $vehicle_image = 'uploads/vehicle_images/' . $file_name;
+        } else {
+            $vehicle_image = Vehicle::where('id', $vehicle_id)->first();
+            $vehicle_image = $vehicle_image->vehicle_picture;
+        }
+
+        // Get file attachments form the form for vehicle document
+        if ($request->hasFile('vehicle_document') && $request->file('vehicle_document')->isValid()) {
+            $file = $request->file('vehicle_document');
+            $file_name = $vehicle_number .  '_' . $file->getClientOriginalExtension();
+            $file->move('uploads/vehicle_documents', $file_name);
+            $vehicle_document = 'uploads/vehicle_documents/' . $file_name;
+        } else {
+            $vehicle_document = Vehicle::where('id', $vehicle_id)->first();
+            $vehicle_document = $vehicle_document->vehicle_document;
+        }
+
         // Get new input elements and update the vehicle details
         $update_vehicle = Vehicle::where("id", $vehicle_id)->update([
             'vehicle_name' => strtoupper($request->input('vehicle_name')),
             'type' => $request->input('vehicle_type_id'),
             'vehicle_number' => strtoupper($request->input('vehicle_number')),
-            'seats' => $request->input('seats')
+            'seats' => $request->input('seats'),
+            'vehicle_picture' => $vehicle_image,
+            'vehicle_document' => $vehicle_document
         ]);
 
         // Log the update action
